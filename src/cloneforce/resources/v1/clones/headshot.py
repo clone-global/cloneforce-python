@@ -30,7 +30,7 @@ class HeadshotResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/clone-global/cloneforce-python#accessing-raw-response-data-eg-headers
         """
         return HeadshotResourceWithRawResponse(self)
 
@@ -39,7 +39,7 @@ class HeadshotResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#with_streaming_response
+        For more information, see https://www.github.com/clone-global/cloneforce-python#with_streaming_response
         """
         return HeadshotResourceWithStreamingResponse(self)
 
@@ -100,7 +100,7 @@ class AsyncHeadshotResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/clone-global/cloneforce-python#accessing-raw-response-data-eg-headers
         """
         return AsyncHeadshotResourceWithRawResponse(self)
 
@@ -109,7 +109,7 @@ class AsyncHeadshotResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#with_streaming_response
+        For more information, see https://www.github.com/clone-global/cloneforce-python#with_streaming_response
         """
         return AsyncHeadshotResourceWithStreamingResponse(self)
 
