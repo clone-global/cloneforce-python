@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ....._types import Body, Query, Headers, NotGiven, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -77,7 +77,12 @@ class ConnectionsResource(SyncAPIResource):
         if not setting_name:
             raise ValueError(f"Expected a non-empty value for `setting_name` but received {setting_name!r}")
         return self._put(
-            f"/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+            path_template(
+                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+                clone_id=clone_id,
+                skill_name=skill_name,
+                setting_name=setting_name,
+            ),
             body=maybe_transform({"connection_id": connection_id}, connection_update_params.ConnectionUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -115,7 +120,9 @@ class ConnectionsResource(SyncAPIResource):
         if not skill_name:
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return self._get(
-            f"/api/v1/clones/{clone_id}/skills/{skill_name}/connections",
+            path_template(
+                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections", clone_id=clone_id, skill_name=skill_name
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -178,7 +185,12 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not setting_name:
             raise ValueError(f"Expected a non-empty value for `setting_name` but received {setting_name!r}")
         return await self._put(
-            f"/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+            path_template(
+                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+                clone_id=clone_id,
+                skill_name=skill_name,
+                setting_name=setting_name,
+            ),
             body=await async_maybe_transform(
                 {"connection_id": connection_id}, connection_update_params.ConnectionUpdateParams
             ),
@@ -218,7 +230,9 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not skill_name:
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return await self._get(
-            f"/api/v1/clones/{clone_id}/skills/{skill_name}/connections",
+            path_template(
+                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections", clone_id=clone_id, skill_name=skill_name
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

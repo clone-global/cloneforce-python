@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ...types.v1 import (
     connection_list_params,
@@ -119,7 +119,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._get(
-            f"/api/v1/connections/{connection_id}",
+            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -157,7 +157,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._patch(
-            f"/api/v1/connections/{connection_id}",
+            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
             body=maybe_transform(
                 {
                     "key": key,
@@ -235,7 +235,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._delete(
-            f"/api/v1/connections/{connection_id}",
+            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -313,7 +313,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._get(
-            f"/api/v1/connections/{connection_id}/status",
+            path_template("/api/v1/connections/{connection_id}/status", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -348,7 +348,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._post(
-            f"/api/v1/connections/{connection_id}/refresh",
+            path_template("/api/v1/connections/{connection_id}/refresh", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -381,7 +381,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._post(
-            f"/api/v1/connections/{connection_id}/reprovision",
+            path_template("/api/v1/connections/{connection_id}/reprovision", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -478,7 +478,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._get(
-            f"/api/v1/connections/{connection_id}",
+            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -516,7 +516,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._patch(
-            f"/api/v1/connections/{connection_id}",
+            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
             body=await async_maybe_transform(
                 {
                     "key": key,
@@ -594,7 +594,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._delete(
-            f"/api/v1/connections/{connection_id}",
+            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -672,7 +672,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._get(
-            f"/api/v1/connections/{connection_id}/status",
+            path_template("/api/v1/connections/{connection_id}/status", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -707,7 +707,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._post(
-            f"/api/v1/connections/{connection_id}/refresh",
+            path_template("/api/v1/connections/{connection_id}/refresh", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -740,7 +740,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._post(
-            f"/api/v1/connections/{connection_id}/reprovision",
+            path_template("/api/v1/connections/{connection_id}/reprovision", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

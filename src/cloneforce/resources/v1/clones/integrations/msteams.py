@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ....._types import Body, Query, Headers, NotGiven, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -75,7 +75,11 @@ class MsteamsResource(SyncAPIResource):
         if not integration_id:
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return self._post(
-            f"/api/v1/clones/{clone_id}/integrations/msteams/{integration_id}/teams",
+            path_template(
+                "/api/v1/clones/{clone_id}/integrations/msteams/{integration_id}/teams",
+                clone_id=clone_id,
+                integration_id=integration_id,
+            ),
             body=maybe_transform({"team_id": team_id}, msteam_teams_params.MsteamTeamsParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -138,7 +142,11 @@ class AsyncMsteamsResource(AsyncAPIResource):
         if not integration_id:
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return await self._post(
-            f"/api/v1/clones/{clone_id}/integrations/msteams/{integration_id}/teams",
+            path_template(
+                "/api/v1/clones/{clone_id}/integrations/msteams/{integration_id}/teams",
+                clone_id=clone_id,
+                integration_id=integration_id,
+            ),
             body=await async_maybe_transform({"team_id": team_id}, msteam_teams_params.MsteamTeamsParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

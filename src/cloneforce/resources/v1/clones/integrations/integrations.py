@@ -23,7 +23,7 @@ from .msteams import (
     AsyncMsteamsResourceWithStreamingResponse,
 )
 from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -104,7 +104,11 @@ class IntegrationsResource(SyncAPIResource):
         if not integration_id:
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return self._get(
-            f"/api/v1/clones/{clone_id}/integrations/{integration_id}",
+            path_template(
+                "/api/v1/clones/{clone_id}/integrations/{integration_id}",
+                clone_id=clone_id,
+                integration_id=integration_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -140,7 +144,7 @@ class IntegrationsResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._get(
-            f"/api/v1/clones/{clone_id}/integrations",
+            path_template("/api/v1/clones/{clone_id}/integrations", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -182,7 +186,11 @@ class IntegrationsResource(SyncAPIResource):
         if not integration_id:
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return self._delete(
-            f"/api/v1/clones/{clone_id}/integrations/{integration_id}",
+            path_template(
+                "/api/v1/clones/{clone_id}/integrations/{integration_id}",
+                clone_id=clone_id,
+                integration_id=integration_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -221,7 +229,7 @@ class IntegrationsResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._post(
-            f"/api/v1/clones/{clone_id}/integrations/phone",
+            path_template("/api/v1/clones/{clone_id}/integrations/phone", clone_id=clone_id),
             body=maybe_transform({"phone": phone}, integration_phone_params.IntegrationPhoneParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -261,7 +269,7 @@ class IntegrationsResource(SyncAPIResource):
         if not type:
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         return self._get(
-            f"/api/v1/clones/{clone_id}/integrations/{type}/setup",
+            path_template("/api/v1/clones/{clone_id}/integrations/{type}/setup", clone_id=clone_id, type=type),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -330,7 +338,11 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         if not integration_id:
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return await self._get(
-            f"/api/v1/clones/{clone_id}/integrations/{integration_id}",
+            path_template(
+                "/api/v1/clones/{clone_id}/integrations/{integration_id}",
+                clone_id=clone_id,
+                integration_id=integration_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -366,7 +378,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._get(
-            f"/api/v1/clones/{clone_id}/integrations",
+            path_template("/api/v1/clones/{clone_id}/integrations", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -408,7 +420,11 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         if not integration_id:
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return await self._delete(
-            f"/api/v1/clones/{clone_id}/integrations/{integration_id}",
+            path_template(
+                "/api/v1/clones/{clone_id}/integrations/{integration_id}",
+                clone_id=clone_id,
+                integration_id=integration_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -447,7 +463,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._post(
-            f"/api/v1/clones/{clone_id}/integrations/phone",
+            path_template("/api/v1/clones/{clone_id}/integrations/phone", clone_id=clone_id),
             body=await async_maybe_transform({"phone": phone}, integration_phone_params.IntegrationPhoneParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -487,7 +503,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         if not type:
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         return await self._get(
-            f"/api/v1/clones/{clone_id}/integrations/{type}/setup",
+            path_template("/api/v1/clones/{clone_id}/integrations/{type}/setup", clone_id=clone_id, type=type),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

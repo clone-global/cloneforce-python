@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -80,7 +80,7 @@ class HeadshotResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._post(
-            f"/api/v1/clones/{clone_id}/headshot/generate",
+            path_template("/api/v1/clones/{clone_id}/headshot/generate", clone_id=clone_id),
             body=maybe_transform(
                 {"additional_instructions": additional_instructions}, headshot_generate_params.HeadshotGenerateParams
             ),
@@ -150,7 +150,7 @@ class AsyncHeadshotResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._post(
-            f"/api/v1/clones/{clone_id}/headshot/generate",
+            path_template("/api/v1/clones/{clone_id}/headshot/generate", clone_id=clone_id),
             body=await async_maybe_transform(
                 {"additional_instructions": additional_instructions}, headshot_generate_params.HeadshotGenerateParams
             ),
