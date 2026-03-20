@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ...types.v1 import skill_search_params, skill_retrieve_params
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -75,7 +75,7 @@ class SkillsResource(SyncAPIResource):
         if not skill_id:
             raise ValueError(f"Expected a non-empty value for `skill_id` but received {skill_id!r}")
         return self._get(
-            f"/api/v1/skills/{skill_id}",
+            path_template("/api/v1/skills/{skill_id}", skill_id=skill_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -188,7 +188,7 @@ class AsyncSkillsResource(AsyncAPIResource):
         if not skill_id:
             raise ValueError(f"Expected a non-empty value for `skill_id` but received {skill_id!r}")
         return await self._get(
-            f"/api/v1/skills/{skill_id}",
+            path_template("/api/v1/skills/{skill_id}", skill_id=skill_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
