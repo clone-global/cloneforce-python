@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ....._types import Body, Query, Headers, NotGiven, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -31,7 +31,7 @@ class ConnectionsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/clone-global/cloneforce-python#accessing-raw-response-data-eg-headers
         """
         return ConnectionsResourceWithRawResponse(self)
 
@@ -40,7 +40,7 @@ class ConnectionsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#with_streaming_response
+        For more information, see https://www.github.com/clone-global/cloneforce-python#with_streaming_response
         """
         return ConnectionsResourceWithStreamingResponse(self)
 
@@ -77,7 +77,12 @@ class ConnectionsResource(SyncAPIResource):
         if not setting_name:
             raise ValueError(f"Expected a non-empty value for `setting_name` but received {setting_name!r}")
         return self._put(
-            f"/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+            path_template(
+                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+                clone_id=clone_id,
+                skill_name=skill_name,
+                setting_name=setting_name,
+            ),
             body=maybe_transform({"connection_id": connection_id}, connection_update_params.ConnectionUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -115,7 +120,9 @@ class ConnectionsResource(SyncAPIResource):
         if not skill_name:
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return self._get(
-            f"/api/v1/clones/{clone_id}/skills/{skill_name}/connections",
+            path_template(
+                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections", clone_id=clone_id, skill_name=skill_name
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -132,7 +139,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/clone-global/cloneforce-python#accessing-raw-response-data-eg-headers
         """
         return AsyncConnectionsResourceWithRawResponse(self)
 
@@ -141,7 +148,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#with_streaming_response
+        For more information, see https://www.github.com/clone-global/cloneforce-python#with_streaming_response
         """
         return AsyncConnectionsResourceWithStreamingResponse(self)
 
@@ -178,7 +185,12 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not setting_name:
             raise ValueError(f"Expected a non-empty value for `setting_name` but received {setting_name!r}")
         return await self._put(
-            f"/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+            path_template(
+                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+                clone_id=clone_id,
+                skill_name=skill_name,
+                setting_name=setting_name,
+            ),
             body=await async_maybe_transform(
                 {"connection_id": connection_id}, connection_update_params.ConnectionUpdateParams
             ),
@@ -218,7 +230,9 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not skill_name:
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return await self._get(
-            f"/api/v1/clones/{clone_id}/skills/{skill_name}/connections",
+            path_template(
+                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections", clone_id=clone_id, skill_name=skill_name
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

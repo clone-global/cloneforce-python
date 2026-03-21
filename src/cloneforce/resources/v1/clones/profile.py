@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -33,7 +33,7 @@ class ProfileResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/clone-global/cloneforce-python#accessing-raw-response-data-eg-headers
         """
         return ProfileResourceWithRawResponse(self)
 
@@ -42,7 +42,7 @@ class ProfileResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#with_streaming_response
+        For more information, see https://www.github.com/clone-global/cloneforce-python#with_streaming_response
         """
         return ProfileResourceWithStreamingResponse(self)
 
@@ -72,7 +72,7 @@ class ProfileResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._get(
-            f"/api/v1/clones/{clone_id}/profile",
+            path_template("/api/v1/clones/{clone_id}/profile", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -133,7 +133,7 @@ class ProfileResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._patch(
-            f"/api/v1/clones/{clone_id}/profile",
+            path_template("/api/v1/clones/{clone_id}/profile", clone_id=clone_id),
             body=maybe_transform(
                 {
                     "appearance_desc": appearance_desc,
@@ -181,7 +181,7 @@ class AsyncProfileResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/clone-global/cloneforce-python#accessing-raw-response-data-eg-headers
         """
         return AsyncProfileResourceWithRawResponse(self)
 
@@ -190,7 +190,7 @@ class AsyncProfileResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/cloneforce-python#with_streaming_response
+        For more information, see https://www.github.com/clone-global/cloneforce-python#with_streaming_response
         """
         return AsyncProfileResourceWithStreamingResponse(self)
 
@@ -220,7 +220,7 @@ class AsyncProfileResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._get(
-            f"/api/v1/clones/{clone_id}/profile",
+            path_template("/api/v1/clones/{clone_id}/profile", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -281,7 +281,7 @@ class AsyncProfileResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._patch(
-            f"/api/v1/clones/{clone_id}/profile",
+            path_template("/api/v1/clones/{clone_id}/profile", clone_id=clone_id),
             body=await async_maybe_transform(
                 {
                     "appearance_desc": appearance_desc,
