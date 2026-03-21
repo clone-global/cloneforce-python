@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.3 (2026-03-21)
+
+Full Changelog: [v0.0.2...v0.0.3](https://github.com/clone-global/cloneforce-python/compare/v0.0.2...v0.0.3)
+
+### Chores
+
+* update SDK settings ([5988ee9](https://github.com/clone-global/cloneforce-python/commit/5988ee9788fbcb73b0a2c89f7f6967068fc79c60))
+* update SDK settings ([5b40f6a](https://github.com/clone-global/cloneforce-python/commit/5b40f6a29ddc11a206da575f34186344c0ad99b3))
+* update SDK settings ([f43658d](https://github.com/clone-global/cloneforce-python/commit/f43658d2e8a7f98c2ca4006d0aa618f55db30c26))
+* update SDK settings ([dd609aa](https://github.com/clone-global/cloneforce-python/commit/dd609aa9c7949de100aeb35c9b59dc21f8e1d580))
+
 ## 0.0.2 (2026-03-20)
 
 Full Changelog: [v0.0.1...v0.0.2](https://github.com/clone-global/cloneforce-python/compare/v0.0.1...v0.0.2)
