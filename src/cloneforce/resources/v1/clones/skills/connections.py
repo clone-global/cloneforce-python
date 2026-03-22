@@ -78,7 +78,7 @@ class ConnectionsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `setting_name` but received {setting_name!r}")
         return self._put(
             path_template(
-                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+                "/public/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
                 clone_id=clone_id,
                 skill_name=skill_name,
                 setting_name=setting_name,
@@ -121,7 +121,7 @@ class ConnectionsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return self._get(
             path_template(
-                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections", clone_id=clone_id, skill_name=skill_name
+                "/public/v1/clones/{clone_id}/skills/{skill_name}/connections", clone_id=clone_id, skill_name=skill_name
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -186,7 +186,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `setting_name` but received {setting_name!r}")
         return await self._put(
             path_template(
-                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
+                "/public/v1/clones/{clone_id}/skills/{skill_name}/connections/{setting_name}",
                 clone_id=clone_id,
                 skill_name=skill_name,
                 setting_name=setting_name,
@@ -231,7 +231,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return await self._get(
             path_template(
-                "/api/v1/clones/{clone_id}/skills/{skill_name}/connections", clone_id=clone_id, skill_name=skill_name
+                "/public/v1/clones/{clone_id}/skills/{skill_name}/connections", clone_id=clone_id, skill_name=skill_name
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

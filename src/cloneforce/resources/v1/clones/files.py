@@ -75,7 +75,7 @@ class FilesResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._post(
-            path_template("/api/v1/clones/{clone_id}/files", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/files", clone_id=clone_id),
             body=maybe_transform(
                 {
                     "url": url,
@@ -119,7 +119,7 @@ class FilesResource(SyncAPIResource):
         if not file_id:
             raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/files/{file_id}", clone_id=clone_id, file_id=file_id),
+            path_template("/public/v1/clones/{clone_id}/files/{file_id}", clone_id=clone_id, file_id=file_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -152,7 +152,7 @@ class FilesResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/files", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/files", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -189,7 +189,7 @@ class FilesResource(SyncAPIResource):
         if not file_id:
             raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return self._delete(
-            path_template("/api/v1/clones/{clone_id}/files/{file_id}", clone_id=clone_id, file_id=file_id),
+            path_template("/public/v1/clones/{clone_id}/files/{file_id}", clone_id=clone_id, file_id=file_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -249,7 +249,7 @@ class AsyncFilesResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._post(
-            path_template("/api/v1/clones/{clone_id}/files", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/files", clone_id=clone_id),
             body=await async_maybe_transform(
                 {
                     "url": url,
@@ -293,7 +293,7 @@ class AsyncFilesResource(AsyncAPIResource):
         if not file_id:
             raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/files/{file_id}", clone_id=clone_id, file_id=file_id),
+            path_template("/public/v1/clones/{clone_id}/files/{file_id}", clone_id=clone_id, file_id=file_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -326,7 +326,7 @@ class AsyncFilesResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/files", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/files", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -363,7 +363,7 @@ class AsyncFilesResource(AsyncAPIResource):
         if not file_id:
             raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
         return await self._delete(
-            path_template("/api/v1/clones/{clone_id}/files/{file_id}", clone_id=clone_id, file_id=file_id),
+            path_template("/public/v1/clones/{clone_id}/files/{file_id}", clone_id=clone_id, file_id=file_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

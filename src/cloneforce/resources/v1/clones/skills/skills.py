@@ -90,7 +90,7 @@ class SkillsResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._post(
-            path_template("/api/v1/clones/{clone_id}/skills", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/skills", clone_id=clone_id),
             body=maybe_transform(
                 {
                     "skill_id": skill_id,
@@ -135,7 +135,7 @@ class SkillsResource(SyncAPIResource):
         if not skill_name:
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return self._patch(
-            path_template("/api/v1/clones/{clone_id}/skills/{skill_name}", clone_id=clone_id, skill_name=skill_name),
+            path_template("/public/v1/clones/{clone_id}/skills/{skill_name}", clone_id=clone_id, skill_name=skill_name),
             body=maybe_transform(
                 {
                     "is_active": is_active,
@@ -178,7 +178,7 @@ class SkillsResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/skills", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/skills", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -219,7 +219,7 @@ class SkillsResource(SyncAPIResource):
         if not skill_name:
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return self._delete(
-            path_template("/api/v1/clones/{clone_id}/skills/{skill_name}", clone_id=clone_id, skill_name=skill_name),
+            path_template("/public/v1/clones/{clone_id}/skills/{skill_name}", clone_id=clone_id, skill_name=skill_name),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -283,7 +283,7 @@ class AsyncSkillsResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._post(
-            path_template("/api/v1/clones/{clone_id}/skills", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/skills", clone_id=clone_id),
             body=await async_maybe_transform(
                 {
                     "skill_id": skill_id,
@@ -328,7 +328,7 @@ class AsyncSkillsResource(AsyncAPIResource):
         if not skill_name:
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return await self._patch(
-            path_template("/api/v1/clones/{clone_id}/skills/{skill_name}", clone_id=clone_id, skill_name=skill_name),
+            path_template("/public/v1/clones/{clone_id}/skills/{skill_name}", clone_id=clone_id, skill_name=skill_name),
             body=await async_maybe_transform(
                 {
                     "is_active": is_active,
@@ -371,7 +371,7 @@ class AsyncSkillsResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/skills", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/skills", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -412,7 +412,7 @@ class AsyncSkillsResource(AsyncAPIResource):
         if not skill_name:
             raise ValueError(f"Expected a non-empty value for `skill_name` but received {skill_name!r}")
         return await self._delete(
-            path_template("/api/v1/clones/{clone_id}/skills/{skill_name}", clone_id=clone_id, skill_name=skill_name),
+            path_template("/public/v1/clones/{clone_id}/skills/{skill_name}", clone_id=clone_id, skill_name=skill_name),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

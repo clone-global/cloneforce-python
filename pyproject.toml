@@ -5,7 +5,7 @@ description = "The official Python library for the cloneforce API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Cloneforce", email = "" },
+{ name = "Cloneforce", email = "developers@cloneforce.com" },
 ]
 
 dependencies = [

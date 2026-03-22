@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .chats import (
+    ChatsResource,
+    AsyncChatsResource,
+    ChatsResourceWithRawResponse,
+    AsyncChatsResourceWithRawResponse,
+    ChatsResourceWithStreamingResponse,
+    AsyncChatsResourceWithStreamingResponse,
+)
 from .files import (
     FilesResource,
     AsyncFilesResource,
@@ -136,6 +144,12 @@ __all__ = [
     "AsyncActivityResourceWithRawResponse",
     "ActivityResourceWithStreamingResponse",
     "AsyncActivityResourceWithStreamingResponse",
+    "ChatsResource",
+    "AsyncChatsResource",
+    "ChatsResourceWithRawResponse",
+    "AsyncChatsResourceWithRawResponse",
+    "ChatsResourceWithStreamingResponse",
+    "AsyncChatsResourceWithStreamingResponse",
     "ClonesResource",
     "AsyncClonesResource",
     "ClonesResourceWithRawResponse",

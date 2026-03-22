@@ -12,9 +12,9 @@ from tests.utils import assert_matches_type
 from cloneforce.types.v1.clones import (
     IntegrationSummary,
     IntegrationListResponse,
-    IntegrationPhoneResponse,
     IntegrationDeleteResponse,
-    IntegrationRetrieveSetupResponse,
+    IntegrationCreatePhoneResponse,
+    IntegrationGetSetupURLResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -180,17 +180,17 @@ class TestIntegrations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_phone(self, client: Cloneforce) -> None:
-        integration = client.v1.clones.integrations.phone(
+    def test_method_create_phone(self, client: Cloneforce) -> None:
+        integration = client.v1.clones.integrations.create_phone(
             clone_id="cloneId",
             phone="phone",
         )
-        assert_matches_type(IntegrationPhoneResponse, integration, path=["response"])
+        assert_matches_type(IntegrationCreatePhoneResponse, integration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_phone(self, client: Cloneforce) -> None:
-        response = client.v1.clones.integrations.with_raw_response.phone(
+    def test_raw_response_create_phone(self, client: Cloneforce) -> None:
+        response = client.v1.clones.integrations.with_raw_response.create_phone(
             clone_id="cloneId",
             phone="phone",
         )
@@ -198,12 +198,12 @@ class TestIntegrations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integration = response.parse()
-        assert_matches_type(IntegrationPhoneResponse, integration, path=["response"])
+        assert_matches_type(IntegrationCreatePhoneResponse, integration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_phone(self, client: Cloneforce) -> None:
-        with client.v1.clones.integrations.with_streaming_response.phone(
+    def test_streaming_response_create_phone(self, client: Cloneforce) -> None:
+        with client.v1.clones.integrations.with_streaming_response.create_phone(
             clone_id="cloneId",
             phone="phone",
         ) as response:
@@ -211,63 +211,69 @@ class TestIntegrations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integration = response.parse()
-            assert_matches_type(IntegrationPhoneResponse, integration, path=["response"])
+            assert_matches_type(IntegrationCreatePhoneResponse, integration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_phone(self, client: Cloneforce) -> None:
+    def test_path_params_create_phone(self, client: Cloneforce) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `clone_id` but received ''"):
-            client.v1.clones.integrations.with_raw_response.phone(
+            client.v1.clones.integrations.with_raw_response.create_phone(
                 clone_id="",
                 phone="phone",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_retrieve_setup(self, client: Cloneforce) -> None:
-        integration = client.v1.clones.integrations.retrieve_setup(
-            type="email",
+    def test_method_get_setup_url(self, client: Cloneforce) -> None:
+        integration = client.v1.clones.integrations.get_setup_url(
+            integration_id="integrationId",
             clone_id="cloneId",
         )
-        assert_matches_type(IntegrationRetrieveSetupResponse, integration, path=["response"])
+        assert_matches_type(IntegrationGetSetupURLResponse, integration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_retrieve_setup(self, client: Cloneforce) -> None:
-        response = client.v1.clones.integrations.with_raw_response.retrieve_setup(
-            type="email",
+    def test_raw_response_get_setup_url(self, client: Cloneforce) -> None:
+        response = client.v1.clones.integrations.with_raw_response.get_setup_url(
+            integration_id="integrationId",
             clone_id="cloneId",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integration = response.parse()
-        assert_matches_type(IntegrationRetrieveSetupResponse, integration, path=["response"])
+        assert_matches_type(IntegrationGetSetupURLResponse, integration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_retrieve_setup(self, client: Cloneforce) -> None:
-        with client.v1.clones.integrations.with_streaming_response.retrieve_setup(
-            type="email",
+    def test_streaming_response_get_setup_url(self, client: Cloneforce) -> None:
+        with client.v1.clones.integrations.with_streaming_response.get_setup_url(
+            integration_id="integrationId",
             clone_id="cloneId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integration = response.parse()
-            assert_matches_type(IntegrationRetrieveSetupResponse, integration, path=["response"])
+            assert_matches_type(IntegrationGetSetupURLResponse, integration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_retrieve_setup(self, client: Cloneforce) -> None:
+    def test_path_params_get_setup_url(self, client: Cloneforce) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `clone_id` but received ''"):
-            client.v1.clones.integrations.with_raw_response.retrieve_setup(
-                type="email",
+            client.v1.clones.integrations.with_raw_response.get_setup_url(
+                integration_id="integrationId",
                 clone_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `integration_id` but received ''"):
+            client.v1.clones.integrations.with_raw_response.get_setup_url(
+                integration_id="",
+                clone_id="cloneId",
             )
 
 
@@ -433,17 +439,17 @@ class TestAsyncIntegrations:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_phone(self, async_client: AsyncCloneforce) -> None:
-        integration = await async_client.v1.clones.integrations.phone(
+    async def test_method_create_phone(self, async_client: AsyncCloneforce) -> None:
+        integration = await async_client.v1.clones.integrations.create_phone(
             clone_id="cloneId",
             phone="phone",
         )
-        assert_matches_type(IntegrationPhoneResponse, integration, path=["response"])
+        assert_matches_type(IntegrationCreatePhoneResponse, integration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_phone(self, async_client: AsyncCloneforce) -> None:
-        response = await async_client.v1.clones.integrations.with_raw_response.phone(
+    async def test_raw_response_create_phone(self, async_client: AsyncCloneforce) -> None:
+        response = await async_client.v1.clones.integrations.with_raw_response.create_phone(
             clone_id="cloneId",
             phone="phone",
         )
@@ -451,12 +457,12 @@ class TestAsyncIntegrations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integration = await response.parse()
-        assert_matches_type(IntegrationPhoneResponse, integration, path=["response"])
+        assert_matches_type(IntegrationCreatePhoneResponse, integration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_phone(self, async_client: AsyncCloneforce) -> None:
-        async with async_client.v1.clones.integrations.with_streaming_response.phone(
+    async def test_streaming_response_create_phone(self, async_client: AsyncCloneforce) -> None:
+        async with async_client.v1.clones.integrations.with_streaming_response.create_phone(
             clone_id="cloneId",
             phone="phone",
         ) as response:
@@ -464,61 +470,67 @@ class TestAsyncIntegrations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integration = await response.parse()
-            assert_matches_type(IntegrationPhoneResponse, integration, path=["response"])
+            assert_matches_type(IntegrationCreatePhoneResponse, integration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_phone(self, async_client: AsyncCloneforce) -> None:
+    async def test_path_params_create_phone(self, async_client: AsyncCloneforce) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `clone_id` but received ''"):
-            await async_client.v1.clones.integrations.with_raw_response.phone(
+            await async_client.v1.clones.integrations.with_raw_response.create_phone(
                 clone_id="",
                 phone="phone",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_retrieve_setup(self, async_client: AsyncCloneforce) -> None:
-        integration = await async_client.v1.clones.integrations.retrieve_setup(
-            type="email",
+    async def test_method_get_setup_url(self, async_client: AsyncCloneforce) -> None:
+        integration = await async_client.v1.clones.integrations.get_setup_url(
+            integration_id="integrationId",
             clone_id="cloneId",
         )
-        assert_matches_type(IntegrationRetrieveSetupResponse, integration, path=["response"])
+        assert_matches_type(IntegrationGetSetupURLResponse, integration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_retrieve_setup(self, async_client: AsyncCloneforce) -> None:
-        response = await async_client.v1.clones.integrations.with_raw_response.retrieve_setup(
-            type="email",
+    async def test_raw_response_get_setup_url(self, async_client: AsyncCloneforce) -> None:
+        response = await async_client.v1.clones.integrations.with_raw_response.get_setup_url(
+            integration_id="integrationId",
             clone_id="cloneId",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         integration = await response.parse()
-        assert_matches_type(IntegrationRetrieveSetupResponse, integration, path=["response"])
+        assert_matches_type(IntegrationGetSetupURLResponse, integration, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_retrieve_setup(self, async_client: AsyncCloneforce) -> None:
-        async with async_client.v1.clones.integrations.with_streaming_response.retrieve_setup(
-            type="email",
+    async def test_streaming_response_get_setup_url(self, async_client: AsyncCloneforce) -> None:
+        async with async_client.v1.clones.integrations.with_streaming_response.get_setup_url(
+            integration_id="integrationId",
             clone_id="cloneId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             integration = await response.parse()
-            assert_matches_type(IntegrationRetrieveSetupResponse, integration, path=["response"])
+            assert_matches_type(IntegrationGetSetupURLResponse, integration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_retrieve_setup(self, async_client: AsyncCloneforce) -> None:
+    async def test_path_params_get_setup_url(self, async_client: AsyncCloneforce) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `clone_id` but received ''"):
-            await async_client.v1.clones.integrations.with_raw_response.retrieve_setup(
-                type="email",
+            await async_client.v1.clones.integrations.with_raw_response.get_setup_url(
+                integration_id="integrationId",
                 clone_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `integration_id` but received ''"):
+            await async_client.v1.clones.integrations.with_raw_response.get_setup_url(
+                integration_id="",
+                clone_id="cloneId",
             )

@@ -82,7 +82,7 @@ class TasksResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._post(
-            path_template("/api/v1/clones/{clone_id}/tasks", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/tasks", clone_id=clone_id),
             body=maybe_transform(
                 {
                     "prompt": prompt,
@@ -129,7 +129,7 @@ class TasksResource(SyncAPIResource):
         if not task_id:
             raise ValueError(f"Expected a non-empty value for `task_id` but received {task_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
+            path_template("/public/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -171,7 +171,7 @@ class TasksResource(SyncAPIResource):
         if not task_id:
             raise ValueError(f"Expected a non-empty value for `task_id` but received {task_id!r}")
         return self._patch(
-            path_template("/api/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
+            path_template("/public/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
             body=maybe_transform(
                 {
                     "color": color,
@@ -218,7 +218,7 @@ class TasksResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/tasks", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/tasks", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -258,7 +258,7 @@ class TasksResource(SyncAPIResource):
         if not task_id:
             raise ValueError(f"Expected a non-empty value for `task_id` but received {task_id!r}")
         return self._delete(
-            path_template("/api/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
+            path_template("/public/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -320,7 +320,7 @@ class AsyncTasksResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._post(
-            path_template("/api/v1/clones/{clone_id}/tasks", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/tasks", clone_id=clone_id),
             body=await async_maybe_transform(
                 {
                     "prompt": prompt,
@@ -367,7 +367,7 @@ class AsyncTasksResource(AsyncAPIResource):
         if not task_id:
             raise ValueError(f"Expected a non-empty value for `task_id` but received {task_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
+            path_template("/public/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -409,7 +409,7 @@ class AsyncTasksResource(AsyncAPIResource):
         if not task_id:
             raise ValueError(f"Expected a non-empty value for `task_id` but received {task_id!r}")
         return await self._patch(
-            path_template("/api/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
+            path_template("/public/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
             body=await async_maybe_transform(
                 {
                     "color": color,
@@ -456,7 +456,7 @@ class AsyncTasksResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/tasks", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/tasks", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -496,7 +496,7 @@ class AsyncTasksResource(AsyncAPIResource):
         if not task_id:
             raise ValueError(f"Expected a non-empty value for `task_id` but received {task_id!r}")
         return await self._delete(
-            path_template("/api/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
+            path_template("/public/v1/clones/{clone_id}/tasks/{task_id}", clone_id=clone_id, task_id=task_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

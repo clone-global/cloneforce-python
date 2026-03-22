@@ -89,7 +89,7 @@ class Cloneforce(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("CLONEFORCE_BASE_URL")
         if base_url is None:
-            base_url = f"https://app.cloneforce.com"
+            base_url = f"https://api.cloneforce.com"
 
         super().__init__(
             version=__version__,
@@ -268,7 +268,7 @@ class AsyncCloneforce(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("CLONEFORCE_BASE_URL")
         if base_url is None:
-            base_url = f"https://app.cloneforce.com"
+            base_url = f"https://api.cloneforce.com"
 
         super().__init__(
             version=__version__,
