@@ -80,7 +80,7 @@ class VoiceResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._post(
-            path_template("/api/v1/clones/{clone_id}/voice/generate", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/voice/generate", clone_id=clone_id),
             body=maybe_transform(
                 {"additional_instructions": additional_instructions}, voice_generate_params.VoiceGenerateParams
             ),
@@ -150,7 +150,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._post(
-            path_template("/api/v1/clones/{clone_id}/voice/generate", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/voice/generate", clone_id=clone_id),
             body=await async_maybe_transform(
                 {"additional_instructions": additional_instructions}, voice_generate_params.VoiceGenerateParams
             ),

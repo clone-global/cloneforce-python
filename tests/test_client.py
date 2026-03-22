@@ -859,7 +859,7 @@ class TestCloneforce:
     @mock.patch("cloneforce._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Cloneforce) -> None:
-        respx_mock.get("/api/v1/clones").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/public/v1/clones").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             client.v1.clones.with_streaming_response.list().__enter__()
@@ -869,7 +869,7 @@ class TestCloneforce:
     @mock.patch("cloneforce._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Cloneforce) -> None:
-        respx_mock.get("/api/v1/clones").mock(return_value=httpx.Response(500))
+        respx_mock.get("/public/v1/clones").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             client.v1.clones.with_streaming_response.list().__enter__()
@@ -899,7 +899,7 @@ class TestCloneforce:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/api/v1/clones").mock(side_effect=retry_handler)
+        respx_mock.get("/public/v1/clones").mock(side_effect=retry_handler)
 
         response = client.v1.clones.with_raw_response.list()
 
@@ -923,7 +923,7 @@ class TestCloneforce:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/api/v1/clones").mock(side_effect=retry_handler)
+        respx_mock.get("/public/v1/clones").mock(side_effect=retry_handler)
 
         response = client.v1.clones.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
@@ -946,7 +946,7 @@ class TestCloneforce:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/api/v1/clones").mock(side_effect=retry_handler)
+        respx_mock.get("/public/v1/clones").mock(side_effect=retry_handler)
 
         response = client.v1.clones.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
@@ -1769,7 +1769,7 @@ class TestAsyncCloneforce:
     async def test_retrying_timeout_errors_doesnt_leak(
         self, respx_mock: MockRouter, async_client: AsyncCloneforce
     ) -> None:
-        respx_mock.get("/api/v1/clones").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/public/v1/clones").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             await async_client.v1.clones.with_streaming_response.list().__aenter__()
@@ -1781,7 +1781,7 @@ class TestAsyncCloneforce:
     async def test_retrying_status_errors_doesnt_leak(
         self, respx_mock: MockRouter, async_client: AsyncCloneforce
     ) -> None:
-        respx_mock.get("/api/v1/clones").mock(return_value=httpx.Response(500))
+        respx_mock.get("/public/v1/clones").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             await async_client.v1.clones.with_streaming_response.list().__aenter__()
@@ -1811,7 +1811,7 @@ class TestAsyncCloneforce:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/api/v1/clones").mock(side_effect=retry_handler)
+        respx_mock.get("/public/v1/clones").mock(side_effect=retry_handler)
 
         response = await client.v1.clones.with_raw_response.list()
 
@@ -1835,7 +1835,7 @@ class TestAsyncCloneforce:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/api/v1/clones").mock(side_effect=retry_handler)
+        respx_mock.get("/public/v1/clones").mock(side_effect=retry_handler)
 
         response = await client.v1.clones.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
@@ -1858,7 +1858,7 @@ class TestAsyncCloneforce:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/api/v1/clones").mock(side_effect=retry_handler)
+        respx_mock.get("/public/v1/clones").mock(side_effect=retry_handler)
 
         response = await client.v1.clones.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 

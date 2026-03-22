@@ -78,7 +78,7 @@ class ConnectionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v1/connections",
+            "/public/v1/connections",
             body=maybe_transform(
                 {
                     "key": key,
@@ -119,7 +119,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._get(
-            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -157,7 +157,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._patch(
-            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}", connection_id=connection_id),
             body=maybe_transform(
                 {
                     "key": key,
@@ -198,7 +198,7 @@ class ConnectionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v1/connections",
+            "/public/v1/connections",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -235,7 +235,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._delete(
-            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -272,7 +272,7 @@ class ConnectionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v1/connections/oauth",
+            "/public/v1/connections/oauth",
             body=maybe_transform(
                 {
                     "name": name,
@@ -313,7 +313,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._get(
-            path_template("/api/v1/connections/{connection_id}/status", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}/status", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -348,7 +348,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._post(
-            path_template("/api/v1/connections/{connection_id}/refresh", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}/refresh", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -381,7 +381,7 @@ class ConnectionsResource(SyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return self._post(
-            path_template("/api/v1/connections/{connection_id}/reprovision", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}/reprovision", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -437,7 +437,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v1/connections",
+            "/public/v1/connections",
             body=await async_maybe_transform(
                 {
                     "key": key,
@@ -478,7 +478,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._get(
-            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -516,7 +516,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._patch(
-            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}", connection_id=connection_id),
             body=await async_maybe_transform(
                 {
                     "key": key,
@@ -557,7 +557,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v1/connections",
+            "/public/v1/connections",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -594,7 +594,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._delete(
-            path_template("/api/v1/connections/{connection_id}", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -631,7 +631,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v1/connections/oauth",
+            "/public/v1/connections/oauth",
             body=await async_maybe_transform(
                 {
                     "name": name,
@@ -672,7 +672,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._get(
-            path_template("/api/v1/connections/{connection_id}/status", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}/status", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -707,7 +707,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._post(
-            path_template("/api/v1/connections/{connection_id}/refresh", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}/refresh", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -740,7 +740,7 @@ class AsyncConnectionsResource(AsyncAPIResource):
         if not connection_id:
             raise ValueError(f"Expected a non-empty value for `connection_id` but received {connection_id!r}")
         return await self._post(
-            path_template("/api/v1/connections/{connection_id}/reprovision", connection_id=connection_id),
+            path_template("/public/v1/connections/{connection_id}/reprovision", connection_id=connection_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

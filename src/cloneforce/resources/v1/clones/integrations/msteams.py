@@ -76,7 +76,7 @@ class MsteamsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return self._post(
             path_template(
-                "/api/v1/clones/{clone_id}/integrations/msteams/{integration_id}/teams",
+                "/public/v1/clones/{clone_id}/integrations/msteams/{integration_id}/teams",
                 clone_id=clone_id,
                 integration_id=integration_id,
             ),
@@ -143,7 +143,7 @@ class AsyncMsteamsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return await self._post(
             path_template(
-                "/api/v1/clones/{clone_id}/integrations/msteams/{integration_id}/teams",
+                "/public/v1/clones/{clone_id}/integrations/msteams/{integration_id}/teams",
                 clone_id=clone_id,
                 integration_id=integration_id,
             ),

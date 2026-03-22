@@ -4,10 +4,10 @@ from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
 
-__all__ = ["IntegrationPhoneResponse"]
+__all__ = ["IntegrationCreatePhoneResponse"]
 
 
-class IntegrationPhoneResponse(BaseModel):
+class IntegrationCreatePhoneResponse(BaseModel):
     id: str
 
     phone_number: str = FieldInfo(alias="phoneNumber")

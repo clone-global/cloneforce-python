@@ -11,6 +11,7 @@ from .task_recurrence import TaskRecurrence as TaskRecurrence
 from .task_list_params import TaskListParams as TaskListParams
 from .generation_status import GenerationStatus as GenerationStatus
 from .skill_list_params import SkillListParams as SkillListParams
+from .chat_create_params import ChatCreateParams as ChatCreateParams
 from .file_create_params import FileCreateParams as FileCreateParams
 from .file_list_response import FileListResponse as FileListResponse
 from .task_create_params import TaskCreateParams as TaskCreateParams
@@ -21,11 +22,13 @@ from .integration_summary import IntegrationSummary as IntegrationSummary
 from .skill_create_params import SkillCreateParams as SkillCreateParams
 from .skill_list_response import SkillListResponse as SkillListResponse
 from .skill_update_params import SkillUpdateParams as SkillUpdateParams
+from .create_chat_response import CreateChatResponse as CreateChatResponse
 from .file_delete_response import FileDeleteResponse as FileDeleteResponse
 from .gallery_item_summary import GalleryItemSummary as GalleryItemSummary
 from .task_delete_response import TaskDeleteResponse as TaskDeleteResponse
 from .gallery_create_params import GalleryCreateParams as GalleryCreateParams
 from .gallery_list_response import GalleryListResponse as GalleryListResponse
+from .profile_update_params import ProfileUpdateParams as ProfileUpdateParams
 from .skill_delete_response import SkillDeleteResponse as SkillDeleteResponse
 from .task_recurrence_param import TaskRecurrenceParam as TaskRecurrenceParam
 from .voice_generate_params import VoiceGenerateParams as VoiceGenerateParams
@@ -33,11 +36,11 @@ from .activity_list_response import ActivityListResponse as ActivityListResponse
 from .gallery_delete_response import GalleryDeleteResponse as GalleryDeleteResponse
 from .integration_list_params import IntegrationListParams as IntegrationListParams
 from .activity_delete_response import ActivityDeleteResponse as ActivityDeleteResponse
+from .chat_completion_response import ChatCompletionResponse as ChatCompletionResponse
 from .headshot_generate_params import HeadshotGenerateParams as HeadshotGenerateParams
-from .integration_phone_params import IntegrationPhoneParams as IntegrationPhoneParams
-from .profile_patch_all_params import ProfilePatchAllParams as ProfilePatchAllParams
 from .integration_list_response import IntegrationListResponse as IntegrationListResponse
 from .activity_retrieve_response import ActivityRetrieveResponse as ActivityRetrieveResponse
-from .integration_phone_response import IntegrationPhoneResponse as IntegrationPhoneResponse
 from .integration_delete_response import IntegrationDeleteResponse as IntegrationDeleteResponse
-from .integration_retrieve_setup_response import IntegrationRetrieveSetupResponse as IntegrationRetrieveSetupResponse
+from .integration_create_phone_params import IntegrationCreatePhoneParams as IntegrationCreatePhoneParams
+from .integration_create_phone_response import IntegrationCreatePhoneResponse as IntegrationCreatePhoneResponse
+from .integration_get_setup_url_response import IntegrationGetSetupURLResponse as IntegrationGetSetupURLResponse

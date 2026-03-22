@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0 (2026-03-22)
+
+Full Changelog: [v0.0.4...v0.1.0](https://github.com/clone-global/cloneforce-python/compare/v0.0.4...v0.1.0)
+
+### Features
+
+* update SDK versions ([6c4102b](https://github.com/clone-global/cloneforce-python/commit/6c4102bea48d0c09b2e90183c7e1c355f9af3df3))
+
 ## 0.0.4 (2026-03-22)
 
 Full Changelog: [v0.0.3...v0.0.4](https://github.com/clone-global/cloneforce-python/compare/v0.0.3...v0.0.4)
