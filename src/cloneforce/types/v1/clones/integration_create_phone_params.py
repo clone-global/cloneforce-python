@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["IntegrationPhoneParams"]
+__all__ = ["IntegrationCreatePhoneParams"]
 
 
-class IntegrationPhoneParams(TypedDict, total=False):
+class IntegrationCreatePhoneParams(TypedDict, total=False):
     phone: Required[str]
     """Phone number to purchase (from the available numbers search)"""

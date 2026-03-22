@@ -75,7 +75,7 @@ class PhoneResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v1/integrations/phone/available",
+            "/public/v1/integrations/phone/available",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -148,7 +148,7 @@ class AsyncPhoneResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v1/integrations/phone/available",
+            "/public/v1/integrations/phone/available",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

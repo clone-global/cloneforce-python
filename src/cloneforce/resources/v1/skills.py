@@ -75,7 +75,7 @@ class SkillsResource(SyncAPIResource):
         if not skill_id:
             raise ValueError(f"Expected a non-empty value for `skill_id` but received {skill_id!r}")
         return self._get(
-            path_template("/api/v1/skills/{skill_id}", skill_id=skill_id),
+            path_template("/public/v1/skills/{skill_id}", skill_id=skill_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -117,7 +117,7 @@ class SkillsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v1/skills/search",
+            "/public/v1/skills/search",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -188,7 +188,7 @@ class AsyncSkillsResource(AsyncAPIResource):
         if not skill_id:
             raise ValueError(f"Expected a non-empty value for `skill_id` but received {skill_id!r}")
         return await self._get(
-            path_template("/api/v1/skills/{skill_id}", skill_id=skill_id),
+            path_template("/public/v1/skills/{skill_id}", skill_id=skill_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -230,7 +230,7 @@ class AsyncSkillsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v1/skills/search",
+            "/public/v1/skills/search",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

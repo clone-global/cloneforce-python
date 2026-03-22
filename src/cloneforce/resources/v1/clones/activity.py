@@ -74,7 +74,7 @@ class ActivityResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `activity_id` but received {activity_id!r}")
         return self._get(
             path_template(
-                "/api/v1/clones/{clone_id}/activity/{activity_id}", clone_id=clone_id, activity_id=activity_id
+                "/public/v1/clones/{clone_id}/activity/{activity_id}", clone_id=clone_id, activity_id=activity_id
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -108,7 +108,7 @@ class ActivityResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/activity", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/activity", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -145,7 +145,7 @@ class ActivityResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `activity_id` but received {activity_id!r}")
         return self._delete(
             path_template(
-                "/api/v1/clones/{clone_id}/activity/{activity_id}", clone_id=clone_id, activity_id=activity_id
+                "/public/v1/clones/{clone_id}/activity/{activity_id}", clone_id=clone_id, activity_id=activity_id
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -206,7 +206,7 @@ class AsyncActivityResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `activity_id` but received {activity_id!r}")
         return await self._get(
             path_template(
-                "/api/v1/clones/{clone_id}/activity/{activity_id}", clone_id=clone_id, activity_id=activity_id
+                "/public/v1/clones/{clone_id}/activity/{activity_id}", clone_id=clone_id, activity_id=activity_id
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -240,7 +240,7 @@ class AsyncActivityResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/activity", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/activity", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -277,7 +277,7 @@ class AsyncActivityResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `activity_id` but received {activity_id!r}")
         return await self._delete(
             path_template(
-                "/api/v1/clones/{clone_id}/activity/{activity_id}", clone_id=clone_id, activity_id=activity_id
+                "/public/v1/clones/{clone_id}/activity/{activity_id}", clone_id=clone_id, activity_id=activity_id
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

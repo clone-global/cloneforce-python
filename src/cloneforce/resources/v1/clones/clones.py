@@ -62,6 +62,14 @@ from .headshot import (
 )
 from ...._types import Body, Query, Headers, NotGiven, not_given
 from ...._compat import cached_property
+from .chats.chats import (
+    ChatsResource,
+    AsyncChatsResource,
+    ChatsResourceWithRawResponse,
+    AsyncChatsResourceWithRawResponse,
+    ChatsResourceWithStreamingResponse,
+    AsyncChatsResourceWithStreamingResponse,
+)
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
     to_raw_response_wrapper,
@@ -140,6 +148,11 @@ class ClonesResource(SyncAPIResource):
         return ActivityResource(self._client)
 
     @cached_property
+    def chats(self) -> ChatsResource:
+        """Chat sessions and completions"""
+        return ChatsResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> ClonesResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -170,7 +183,7 @@ class ClonesResource(SyncAPIResource):
     ) -> CloneListResponse:
         """Returns all clones in the organization, ordered by creation date descending."""
         return self._get(
-            "/api/v1/clones",
+            "/public/v1/clones",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -227,6 +240,11 @@ class AsyncClonesResource(AsyncAPIResource):
         return AsyncActivityResource(self._client)
 
     @cached_property
+    def chats(self) -> AsyncChatsResource:
+        """Chat sessions and completions"""
+        return AsyncChatsResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncClonesResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -257,7 +275,7 @@ class AsyncClonesResource(AsyncAPIResource):
     ) -> CloneListResponse:
         """Returns all clones in the organization, ordered by creation date descending."""
         return await self._get(
-            "/api/v1/clones",
+            "/public/v1/clones",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -318,6 +336,11 @@ class ClonesResourceWithRawResponse:
         """Task run history"""
         return ActivityResourceWithRawResponse(self._clones.activity)
 
+    @cached_property
+    def chats(self) -> ChatsResourceWithRawResponse:
+        """Chat sessions and completions"""
+        return ChatsResourceWithRawResponse(self._clones.chats)
+
 
 class AsyncClonesResourceWithRawResponse:
     def __init__(self, clones: AsyncClonesResource) -> None:
@@ -371,6 +394,11 @@ class AsyncClonesResourceWithRawResponse:
     def activity(self) -> AsyncActivityResourceWithRawResponse:
         """Task run history"""
         return AsyncActivityResourceWithRawResponse(self._clones.activity)
+
+    @cached_property
+    def chats(self) -> AsyncChatsResourceWithRawResponse:
+        """Chat sessions and completions"""
+        return AsyncChatsResourceWithRawResponse(self._clones.chats)
 
 
 class ClonesResourceWithStreamingResponse:
@@ -426,6 +454,11 @@ class ClonesResourceWithStreamingResponse:
         """Task run history"""
         return ActivityResourceWithStreamingResponse(self._clones.activity)
 
+    @cached_property
+    def chats(self) -> ChatsResourceWithStreamingResponse:
+        """Chat sessions and completions"""
+        return ChatsResourceWithStreamingResponse(self._clones.chats)
+
 
 class AsyncClonesResourceWithStreamingResponse:
     def __init__(self, clones: AsyncClonesResource) -> None:
@@ -479,3 +512,8 @@ class AsyncClonesResourceWithStreamingResponse:
     def activity(self) -> AsyncActivityResourceWithStreamingResponse:
         """Task run history"""
         return AsyncActivityResourceWithStreamingResponse(self._clones.activity)
+
+    @cached_property
+    def chats(self) -> AsyncChatsResourceWithStreamingResponse:
+        """Chat sessions and completions"""
+        return AsyncChatsResourceWithStreamingResponse(self._clones.chats)

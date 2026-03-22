@@ -18,7 +18,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.v1.clones import profile_patch_all_params
+from ....types.v1.clones import profile_update_params
 from ....types.v1.clones.clone_profile import CloneProfile
 
 __all__ = ["ProfileResource", "AsyncProfileResource"]
@@ -46,7 +46,7 @@ class ProfileResource(SyncAPIResource):
         """
         return ProfileResourceWithStreamingResponse(self)
 
-    def list(
+    def retrieve(
         self,
         clone_id: str,
         *,
@@ -72,14 +72,14 @@ class ProfileResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/profile", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/profile", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CloneProfile,
         )
 
-    def patch_all(
+    def update(
         self,
         clone_id: str,
         *,
@@ -133,7 +133,7 @@ class ProfileResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._patch(
-            path_template("/api/v1/clones/{clone_id}/profile", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/profile", clone_id=clone_id),
             body=maybe_transform(
                 {
                     "appearance_desc": appearance_desc,
@@ -163,7 +163,7 @@ class ProfileResource(SyncAPIResource):
                     "travel_desc": travel_desc,
                     "unusual_hobbies_desc": unusual_hobbies_desc,
                 },
-                profile_patch_all_params.ProfilePatchAllParams,
+                profile_update_params.ProfileUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -194,7 +194,7 @@ class AsyncProfileResource(AsyncAPIResource):
         """
         return AsyncProfileResourceWithStreamingResponse(self)
 
-    async def list(
+    async def retrieve(
         self,
         clone_id: str,
         *,
@@ -220,14 +220,14 @@ class AsyncProfileResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/profile", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/profile", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CloneProfile,
         )
 
-    async def patch_all(
+    async def update(
         self,
         clone_id: str,
         *,
@@ -281,7 +281,7 @@ class AsyncProfileResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._patch(
-            path_template("/api/v1/clones/{clone_id}/profile", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/profile", clone_id=clone_id),
             body=await async_maybe_transform(
                 {
                     "appearance_desc": appearance_desc,
@@ -311,7 +311,7 @@ class AsyncProfileResource(AsyncAPIResource):
                     "travel_desc": travel_desc,
                     "unusual_hobbies_desc": unusual_hobbies_desc,
                 },
-                profile_patch_all_params.ProfilePatchAllParams,
+                profile_update_params.ProfileUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -324,11 +324,11 @@ class ProfileResourceWithRawResponse:
     def __init__(self, profile: ProfileResource) -> None:
         self._profile = profile
 
-        self.list = to_raw_response_wrapper(
-            profile.list,
+        self.retrieve = to_raw_response_wrapper(
+            profile.retrieve,
         )
-        self.patch_all = to_raw_response_wrapper(
-            profile.patch_all,
+        self.update = to_raw_response_wrapper(
+            profile.update,
         )
 
 
@@ -336,11 +336,11 @@ class AsyncProfileResourceWithRawResponse:
     def __init__(self, profile: AsyncProfileResource) -> None:
         self._profile = profile
 
-        self.list = async_to_raw_response_wrapper(
-            profile.list,
+        self.retrieve = async_to_raw_response_wrapper(
+            profile.retrieve,
         )
-        self.patch_all = async_to_raw_response_wrapper(
-            profile.patch_all,
+        self.update = async_to_raw_response_wrapper(
+            profile.update,
         )
 
 
@@ -348,11 +348,11 @@ class ProfileResourceWithStreamingResponse:
     def __init__(self, profile: ProfileResource) -> None:
         self._profile = profile
 
-        self.list = to_streamed_response_wrapper(
-            profile.list,
+        self.retrieve = to_streamed_response_wrapper(
+            profile.retrieve,
         )
-        self.patch_all = to_streamed_response_wrapper(
-            profile.patch_all,
+        self.update = to_streamed_response_wrapper(
+            profile.update,
         )
 
 
@@ -360,9 +360,9 @@ class AsyncProfileResourceWithStreamingResponse:
     def __init__(self, profile: AsyncProfileResource) -> None:
         self._profile = profile
 
-        self.list = async_to_streamed_response_wrapper(
-            profile.list,
+        self.retrieve = async_to_streamed_response_wrapper(
+            profile.retrieve,
         )
-        self.patch_all = async_to_streamed_response_wrapper(
-            profile.patch_all,
+        self.update = async_to_streamed_response_wrapper(
+            profile.update,
         )

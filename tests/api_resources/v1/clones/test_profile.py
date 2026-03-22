@@ -20,16 +20,16 @@ class TestProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_list(self, client: Cloneforce) -> None:
-        profile = client.v1.clones.profile.list(
+    def test_method_retrieve(self, client: Cloneforce) -> None:
+        profile = client.v1.clones.profile.retrieve(
             "cloneId",
         )
         assert_matches_type(CloneProfile, profile, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Cloneforce) -> None:
-        response = client.v1.clones.profile.with_raw_response.list(
+    def test_raw_response_retrieve(self, client: Cloneforce) -> None:
+        response = client.v1.clones.profile.with_raw_response.retrieve(
             "cloneId",
         )
 
@@ -40,8 +40,8 @@ class TestProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Cloneforce) -> None:
-        with client.v1.clones.profile.with_streaming_response.list(
+    def test_streaming_response_retrieve(self, client: Cloneforce) -> None:
+        with client.v1.clones.profile.with_streaming_response.retrieve(
             "cloneId",
         ) as response:
             assert not response.is_closed
@@ -54,24 +54,24 @@ class TestProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_list(self, client: Cloneforce) -> None:
+    def test_path_params_retrieve(self, client: Cloneforce) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `clone_id` but received ''"):
-            client.v1.clones.profile.with_raw_response.list(
+            client.v1.clones.profile.with_raw_response.retrieve(
                 "",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_patch_all(self, client: Cloneforce) -> None:
-        profile = client.v1.clones.profile.patch_all(
+    def test_method_update(self, client: Cloneforce) -> None:
+        profile = client.v1.clones.profile.update(
             clone_id="cloneId",
         )
         assert_matches_type(CloneProfile, profile, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_patch_all_with_all_params(self, client: Cloneforce) -> None:
-        profile = client.v1.clones.profile.patch_all(
+    def test_method_update_with_all_params(self, client: Cloneforce) -> None:
+        profile = client.v1.clones.profile.update(
             clone_id="cloneId",
             appearance_desc="appearanceDesc",
             birthdate=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -104,8 +104,8 @@ class TestProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_patch_all(self, client: Cloneforce) -> None:
-        response = client.v1.clones.profile.with_raw_response.patch_all(
+    def test_raw_response_update(self, client: Cloneforce) -> None:
+        response = client.v1.clones.profile.with_raw_response.update(
             clone_id="cloneId",
         )
 
@@ -116,8 +116,8 @@ class TestProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_patch_all(self, client: Cloneforce) -> None:
-        with client.v1.clones.profile.with_streaming_response.patch_all(
+    def test_streaming_response_update(self, client: Cloneforce) -> None:
+        with client.v1.clones.profile.with_streaming_response.update(
             clone_id="cloneId",
         ) as response:
             assert not response.is_closed
@@ -130,9 +130,9 @@ class TestProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_path_params_patch_all(self, client: Cloneforce) -> None:
+    def test_path_params_update(self, client: Cloneforce) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `clone_id` but received ''"):
-            client.v1.clones.profile.with_raw_response.patch_all(
+            client.v1.clones.profile.with_raw_response.update(
                 clone_id="",
             )
 
@@ -144,16 +144,16 @@ class TestAsyncProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncCloneforce) -> None:
-        profile = await async_client.v1.clones.profile.list(
+    async def test_method_retrieve(self, async_client: AsyncCloneforce) -> None:
+        profile = await async_client.v1.clones.profile.retrieve(
             "cloneId",
         )
         assert_matches_type(CloneProfile, profile, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncCloneforce) -> None:
-        response = await async_client.v1.clones.profile.with_raw_response.list(
+    async def test_raw_response_retrieve(self, async_client: AsyncCloneforce) -> None:
+        response = await async_client.v1.clones.profile.with_raw_response.retrieve(
             "cloneId",
         )
 
@@ -164,8 +164,8 @@ class TestAsyncProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncCloneforce) -> None:
-        async with async_client.v1.clones.profile.with_streaming_response.list(
+    async def test_streaming_response_retrieve(self, async_client: AsyncCloneforce) -> None:
+        async with async_client.v1.clones.profile.with_streaming_response.retrieve(
             "cloneId",
         ) as response:
             assert not response.is_closed
@@ -178,24 +178,24 @@ class TestAsyncProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncCloneforce) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncCloneforce) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `clone_id` but received ''"):
-            await async_client.v1.clones.profile.with_raw_response.list(
+            await async_client.v1.clones.profile.with_raw_response.retrieve(
                 "",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_patch_all(self, async_client: AsyncCloneforce) -> None:
-        profile = await async_client.v1.clones.profile.patch_all(
+    async def test_method_update(self, async_client: AsyncCloneforce) -> None:
+        profile = await async_client.v1.clones.profile.update(
             clone_id="cloneId",
         )
         assert_matches_type(CloneProfile, profile, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_patch_all_with_all_params(self, async_client: AsyncCloneforce) -> None:
-        profile = await async_client.v1.clones.profile.patch_all(
+    async def test_method_update_with_all_params(self, async_client: AsyncCloneforce) -> None:
+        profile = await async_client.v1.clones.profile.update(
             clone_id="cloneId",
             appearance_desc="appearanceDesc",
             birthdate=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -228,8 +228,8 @@ class TestAsyncProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_patch_all(self, async_client: AsyncCloneforce) -> None:
-        response = await async_client.v1.clones.profile.with_raw_response.patch_all(
+    async def test_raw_response_update(self, async_client: AsyncCloneforce) -> None:
+        response = await async_client.v1.clones.profile.with_raw_response.update(
             clone_id="cloneId",
         )
 
@@ -240,8 +240,8 @@ class TestAsyncProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_patch_all(self, async_client: AsyncCloneforce) -> None:
-        async with async_client.v1.clones.profile.with_streaming_response.patch_all(
+    async def test_streaming_response_update(self, async_client: AsyncCloneforce) -> None:
+        async with async_client.v1.clones.profile.with_streaming_response.update(
             clone_id="cloneId",
         ) as response:
             assert not response.is_closed
@@ -254,8 +254,8 @@ class TestAsyncProfile:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_path_params_patch_all(self, async_client: AsyncCloneforce) -> None:
+    async def test_path_params_update(self, async_client: AsyncCloneforce) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `clone_id` but received ''"):
-            await async_client.v1.clones.profile.with_raw_response.patch_all(
+            await async_client.v1.clones.profile.with_raw_response.update(
                 clone_id="",
             )

@@ -9,10 +9,10 @@ from typing_extensions import Annotated, TypedDict
 from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 
-__all__ = ["ProfilePatchAllParams"]
+__all__ = ["ProfileUpdateParams"]
 
 
-class ProfilePatchAllParams(TypedDict, total=False):
+class ProfileUpdateParams(TypedDict, total=False):
     appearance_desc: Annotated[str, PropertyInfo(alias="appearanceDesc")]
 
     birthdate: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]

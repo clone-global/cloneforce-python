@@ -70,7 +70,7 @@ class SlackResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._post(
-            path_template("/api/v1/clones/{clone_id}/integrations/slack", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/integrations/slack", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -111,7 +111,7 @@ class SlackResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return self._patch(
             path_template(
-                "/api/v1/clones/{clone_id}/integrations/slack/{integration_id}",
+                "/public/v1/clones/{clone_id}/integrations/slack/{integration_id}",
                 clone_id=clone_id,
                 integration_id=integration_id,
             ),
@@ -178,7 +178,7 @@ class AsyncSlackResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._post(
-            path_template("/api/v1/clones/{clone_id}/integrations/slack", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/integrations/slack", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -219,7 +219,7 @@ class AsyncSlackResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return await self._patch(
             path_template(
-                "/api/v1/clones/{clone_id}/integrations/slack/{integration_id}",
+                "/public/v1/clones/{clone_id}/integrations/slack/{integration_id}",
                 clone_id=clone_id,
                 integration_id=integration_id,
             ),

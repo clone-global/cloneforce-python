@@ -33,12 +33,12 @@ from ....._response import (
     async_to_streamed_response_wrapper,
 )
 from ....._base_client import make_request_options
-from .....types.v1.clones import integration_list_params, integration_phone_params
+from .....types.v1.clones import integration_list_params, integration_create_phone_params
 from .....types.v1.clones.integration_summary import IntegrationSummary
 from .....types.v1.clones.integration_list_response import IntegrationListResponse
-from .....types.v1.clones.integration_phone_response import IntegrationPhoneResponse
 from .....types.v1.clones.integration_delete_response import IntegrationDeleteResponse
-from .....types.v1.clones.integration_retrieve_setup_response import IntegrationRetrieveSetupResponse
+from .....types.v1.clones.integration_create_phone_response import IntegrationCreatePhoneResponse
+from .....types.v1.clones.integration_get_setup_url_response import IntegrationGetSetupURLResponse
 
 __all__ = ["IntegrationsResource", "AsyncIntegrationsResource"]
 
@@ -105,7 +105,7 @@ class IntegrationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return self._get(
             path_template(
-                "/api/v1/clones/{clone_id}/integrations/{integration_id}",
+                "/public/v1/clones/{clone_id}/integrations/{integration_id}",
                 clone_id=clone_id,
                 integration_id=integration_id,
             ),
@@ -144,7 +144,7 @@ class IntegrationsResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/integrations", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/integrations", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -187,7 +187,7 @@ class IntegrationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return self._delete(
             path_template(
-                "/api/v1/clones/{clone_id}/integrations/{integration_id}",
+                "/public/v1/clones/{clone_id}/integrations/{integration_id}",
                 clone_id=clone_id,
                 integration_id=integration_id,
             ),
@@ -197,7 +197,7 @@ class IntegrationsResource(SyncAPIResource):
             cast_to=IntegrationDeleteResponse,
         )
 
-    def phone(
+    def create_phone(
         self,
         clone_id: str,
         *,
@@ -208,7 +208,7 @@ class IntegrationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegrationPhoneResponse:
+    ) -> IntegrationCreatePhoneResponse:
         """Purchases a phone number and provisions it for clone voice calls.
 
         Requires
@@ -229,17 +229,17 @@ class IntegrationsResource(SyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return self._post(
-            path_template("/api/v1/clones/{clone_id}/integrations/phone", clone_id=clone_id),
-            body=maybe_transform({"phone": phone}, integration_phone_params.IntegrationPhoneParams),
+            path_template("/public/v1/clones/{clone_id}/integrations/phone", clone_id=clone_id),
+            body=maybe_transform({"phone": phone}, integration_create_phone_params.IntegrationCreatePhoneParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegrationPhoneResponse,
+            cast_to=IntegrationCreatePhoneResponse,
         )
 
-    def retrieve_setup(
+    def get_setup_url(
         self,
-        type: Literal["email", "msteams"],
+        integration_id: str,
         *,
         clone_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -248,7 +248,7 @@ class IntegrationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegrationRetrieveSetupResponse:
+    ) -> IntegrationGetSetupURLResponse:
         """Returns a browser URL for the OAuth-based setup flow.
 
         Supported types: `email`,
@@ -266,14 +266,18 @@ class IntegrationsResource(SyncAPIResource):
         """
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
-        if not type:
-            raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
+        if not integration_id:
+            raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return self._get(
-            path_template("/api/v1/clones/{clone_id}/integrations/{type}/setup", clone_id=clone_id, type=type),
+            path_template(
+                "/public/v1/clones/{clone_id}/integrations/{integration_id}/setup",
+                clone_id=clone_id,
+                integration_id=integration_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegrationRetrieveSetupResponse,
+            cast_to=IntegrationGetSetupURLResponse,
         )
 
 
@@ -339,7 +343,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return await self._get(
             path_template(
-                "/api/v1/clones/{clone_id}/integrations/{integration_id}",
+                "/public/v1/clones/{clone_id}/integrations/{integration_id}",
                 clone_id=clone_id,
                 integration_id=integration_id,
             ),
@@ -378,7 +382,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/integrations", clone_id=clone_id),
+            path_template("/public/v1/clones/{clone_id}/integrations", clone_id=clone_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -421,7 +425,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return await self._delete(
             path_template(
-                "/api/v1/clones/{clone_id}/integrations/{integration_id}",
+                "/public/v1/clones/{clone_id}/integrations/{integration_id}",
                 clone_id=clone_id,
                 integration_id=integration_id,
             ),
@@ -431,7 +435,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
             cast_to=IntegrationDeleteResponse,
         )
 
-    async def phone(
+    async def create_phone(
         self,
         clone_id: str,
         *,
@@ -442,7 +446,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegrationPhoneResponse:
+    ) -> IntegrationCreatePhoneResponse:
         """Purchases a phone number and provisions it for clone voice calls.
 
         Requires
@@ -463,17 +467,19 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
         return await self._post(
-            path_template("/api/v1/clones/{clone_id}/integrations/phone", clone_id=clone_id),
-            body=await async_maybe_transform({"phone": phone}, integration_phone_params.IntegrationPhoneParams),
+            path_template("/public/v1/clones/{clone_id}/integrations/phone", clone_id=clone_id),
+            body=await async_maybe_transform(
+                {"phone": phone}, integration_create_phone_params.IntegrationCreatePhoneParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegrationPhoneResponse,
+            cast_to=IntegrationCreatePhoneResponse,
         )
 
-    async def retrieve_setup(
+    async def get_setup_url(
         self,
-        type: Literal["email", "msteams"],
+        integration_id: str,
         *,
         clone_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -482,7 +488,7 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> IntegrationRetrieveSetupResponse:
+    ) -> IntegrationGetSetupURLResponse:
         """Returns a browser URL for the OAuth-based setup flow.
 
         Supported types: `email`,
@@ -500,14 +506,18 @@ class AsyncIntegrationsResource(AsyncAPIResource):
         """
         if not clone_id:
             raise ValueError(f"Expected a non-empty value for `clone_id` but received {clone_id!r}")
-        if not type:
-            raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
+        if not integration_id:
+            raise ValueError(f"Expected a non-empty value for `integration_id` but received {integration_id!r}")
         return await self._get(
-            path_template("/api/v1/clones/{clone_id}/integrations/{type}/setup", clone_id=clone_id, type=type),
+            path_template(
+                "/public/v1/clones/{clone_id}/integrations/{integration_id}/setup",
+                clone_id=clone_id,
+                integration_id=integration_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegrationRetrieveSetupResponse,
+            cast_to=IntegrationGetSetupURLResponse,
         )
 
 
@@ -524,11 +534,11 @@ class IntegrationsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             integrations.delete,
         )
-        self.phone = to_raw_response_wrapper(
-            integrations.phone,
+        self.create_phone = to_raw_response_wrapper(
+            integrations.create_phone,
         )
-        self.retrieve_setup = to_raw_response_wrapper(
-            integrations.retrieve_setup,
+        self.get_setup_url = to_raw_response_wrapper(
+            integrations.get_setup_url,
         )
 
     @cached_property
@@ -555,11 +565,11 @@ class AsyncIntegrationsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             integrations.delete,
         )
-        self.phone = async_to_raw_response_wrapper(
-            integrations.phone,
+        self.create_phone = async_to_raw_response_wrapper(
+            integrations.create_phone,
         )
-        self.retrieve_setup = async_to_raw_response_wrapper(
-            integrations.retrieve_setup,
+        self.get_setup_url = async_to_raw_response_wrapper(
+            integrations.get_setup_url,
         )
 
     @cached_property
@@ -586,11 +596,11 @@ class IntegrationsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             integrations.delete,
         )
-        self.phone = to_streamed_response_wrapper(
-            integrations.phone,
+        self.create_phone = to_streamed_response_wrapper(
+            integrations.create_phone,
         )
-        self.retrieve_setup = to_streamed_response_wrapper(
-            integrations.retrieve_setup,
+        self.get_setup_url = to_streamed_response_wrapper(
+            integrations.get_setup_url,
         )
 
     @cached_property
@@ -617,11 +627,11 @@ class AsyncIntegrationsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             integrations.delete,
         )
-        self.phone = async_to_streamed_response_wrapper(
-            integrations.phone,
+        self.create_phone = async_to_streamed_response_wrapper(
+            integrations.create_phone,
         )
-        self.retrieve_setup = async_to_streamed_response_wrapper(
-            integrations.retrieve_setup,
+        self.get_setup_url = async_to_streamed_response_wrapper(
+            integrations.get_setup_url,
         )
 
     @cached_property

@@ -31,4 +31,4 @@ class ConnectionDetail(BaseModel):
 
     expires_at: Optional[datetime] = FieldInfo(alias="expiresAt", default=None)
 
-    extra_fields: Optional[Dict[str, str]] = FieldInfo(alias="extraFields", default=None)
+    metadata: Optional[Dict[str, str]] = None
