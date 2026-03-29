@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.0 (2026-03-27)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/clone-global/cloneforce-python/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([158727e](https://github.com/clone-global/cloneforce-python/commit/158727e55f282a5814e274ad03e7aed2da1012af))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([e9d24b1](https://github.com/clone-global/cloneforce-python/commit/e9d24b1a58151dcec086621cd0fc0ccd88a85bc7))
+* **internal:** update gitignore ([2b2466a](https://github.com/clone-global/cloneforce-python/commit/2b2466a283c098ecda44ac59e1b61ab3a6a0d66b))
+
 ## 0.1.0 (2026-03-22)
 
 Full Changelog: [v0.0.4...v0.1.0](https://github.com/clone-global/cloneforce-python/compare/v0.0.4...v0.1.0)
