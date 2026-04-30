@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.0 (2026-04-30)
+
+Full Changelog: [v0.2.1...v0.3.0](https://github.com/clone-global/cloneforce-python/compare/v0.2.1...v0.3.0)
+
+### Features
+
+* support setting headers via env ([8fa79ad](https://github.com/clone-global/cloneforce-python/commit/8fa79ad7e235c66e257ea3457d030d06554c9655))
+
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([effe304](https://github.com/clone-global/cloneforce-python/commit/effe304ccf2e2309bf074604c54b045607d00227))
+* ensure file data are only sent as 1 parameter ([936137b](https://github.com/clone-global/cloneforce-python/commit/936137b6ace3ba5207aec093fc4bc99acaa8dcd9))
+* use correct field name format for multipart file arrays ([b31c73a](https://github.com/clone-global/cloneforce-python/commit/b31c73a880236c5b7035d1517eb3ed49d94d0b96))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([693a27b](https://github.com/clone-global/cloneforce-python/commit/693a27b775b798b31177cb0331bf098ce45fcf1a))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([df34e09](https://github.com/clone-global/cloneforce-python/commit/df34e09b8fa6d9762f52837635b45b23339a16f4))
+
 ## 0.2.1 (2026-03-29)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/clone-global/cloneforce-python/compare/v0.2.0...v0.2.1)
