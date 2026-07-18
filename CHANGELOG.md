@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.3.0 (2026-07-18)
+
+Full Changelog: [v0.2.1...v0.3.0](https://github.com/clone-global/cloneforce-python/compare/v0.2.1...v0.3.0)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([03c8592](https://github.com/clone-global/cloneforce-python/commit/03c859280f37b84d789cf85f976254ce97f40814))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([5c41de4](https://github.com/clone-global/cloneforce-python/commit/5c41de41f7829ffa98650f70016ef9068fa52a95))
+* support setting headers via env ([8fa79ad](https://github.com/clone-global/cloneforce-python/commit/8fa79ad7e235c66e257ea3457d030d06554c9655))
+
+
+### Bug Fixes
+
+* **auth:** prioritize first auth header ([0d16fe3](https://github.com/clone-global/cloneforce-python/commit/0d16fe35bac70cce52723333ac8a841ab9345ea8))
+* **client:** add missing f-string prefix in file type error message ([04eabd8](https://github.com/clone-global/cloneforce-python/commit/04eabd859c0185cbc655898e143cadc4c8a66cbc))
+* **client:** preserve hardcoded query params when merging with user params ([effe304](https://github.com/clone-global/cloneforce-python/commit/effe304ccf2e2309bf074604c54b045607d00227))
+* ensure file data are only sent as 1 parameter ([936137b](https://github.com/clone-global/cloneforce-python/commit/936137b6ace3ba5207aec093fc4bc99acaa8dcd9))
+* **internal:** resolve build failures ([d22e8ee](https://github.com/clone-global/cloneforce-python/commit/d22e8ee1129755dfb88c1699931b52b6ad32fe1a))
+* use correct field name format for multipart file arrays ([b31c73a](https://github.com/clone-global/cloneforce-python/commit/b31c73a880236c5b7035d1517eb3ed49d94d0b96))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([693a27b](https://github.com/clone-global/cloneforce-python/commit/693a27b775b798b31177cb0331bf098ce45fcf1a))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([df34e09](https://github.com/clone-global/cloneforce-python/commit/df34e09b8fa6d9762f52837635b45b23339a16f4))
+* **internal:** reformat pyproject.toml ([0c77779](https://github.com/clone-global/cloneforce-python/commit/0c77779b94d77cd1e95951a4eb43d1e4c03970e2))
+
 ## 0.2.1 (2026-03-29)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/clone-global/cloneforce-python/compare/v0.2.0...v0.2.1)
