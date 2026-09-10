@@ -11,4 +11,9 @@ class OAuthProvision(BaseModel):
     connection_id: str = FieldInfo(alias="connectionId")
 
     provision_url: str = FieldInfo(alias="provisionUrl")
-    """URL to present to the user to complete the OAuth consent flow"""
+    """Deprecated.
+
+    This URL pointed at the legacy v1 web app's OAuth consent flow, retired in
+    September 2026, and no longer resolves. Provision OAuth connections in Studio
+    instead. The field is kept so existing clients keep parsing the response.
+    """
